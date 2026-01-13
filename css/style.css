@@ -83,7 +83,7 @@ body.lock {
   overflow: hidden;
   padding-right: 15px;
 }
-@media only screen and (max-width: 1023.98px) {
+@media only screen and (max-width: 1660px) {
   body.lock {
     padding-right: 0;
   }
@@ -1792,6 +1792,9 @@ textarea.form-control {
   max-width: 405px;
   min-height: var(--height);
   width: calc(100% - 40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   bottom: 20px;
   left: 50%;
@@ -2864,7 +2867,13 @@ textarea.form-control {
   border-radius: 20px;
 }
 .article__desc {
+  max-width: 80%;
   margin-bottom: 50px;
+}
+@media only screen and (max-width: 1279.98px) {
+  .article__desc {
+    max-width: 100%;
+  }
 }
 @media only screen and (max-width: 767.98px) {
   .article__desc {

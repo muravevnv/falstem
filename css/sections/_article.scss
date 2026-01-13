@@ -19,7 +19,12 @@
   }
 
   &__desc {
+    max-width: 80%;
     margin-bottom: 50px;
+
+    @include mq($xl) {
+      max-width: 100%;
+    }
 
     @include mq($m) {
       margin-bottom: 30px;

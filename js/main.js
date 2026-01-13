@@ -295,21 +295,19 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const customPlacemark = new ymaps.Placemark(
-        [53.262929, 36.543592], // Координаты
+        [53.262929, 36.543592],
         {
           balloonContent: "Фалстем",
           iconCaption: "",
         },
         {
-          // Настройки кастомной иконки
-          iconLayout: "default#image", // Используем картинку
-          iconImageHref: "../images/icons/map-pin.svg", // URL вашей картинки
-          iconImageSize: [100, 100], // Размер иконки
-          iconImageOffset: [-150, 150], // Смещение (центрирование)
+          
+          iconLayout: "default#image",
+          iconImageHref: "../images/icons/map-pin.svg",
+          iconImageSize: [100, 100],
+          iconImageOffset: [-150, 150],
         }
       );
-
-      // Добавляем метку на карту
       map.geoObjects.add(customPlacemark);
     });
   }

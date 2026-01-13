@@ -212,6 +212,9 @@
     max-width: 405px;
     min-height: var(--height);
     width: calc(100% - 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     bottom: 20px;
     left: 50%;
