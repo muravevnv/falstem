@@ -1,0 +1,161 @@
+@use '../mixins' as *;
+
+.faq {
+
+  .section-heading__title {
+    span {
+      display: block;
+
+      @include mq($m) {
+        display: inline;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include mq($m) {
+      gap: 0px;
+    }
+  }
+
+  &__btn {
+    margin-top: 20px;
+  }
+}
+
+.faq-item {
+  width: 100%;
+
+  @include mq($m) {
+    border-bottom: 1px solid var(--color-border);
+
+    &:first-of-type {
+      border-top: 1px solid var(--color-border);
+    }
+  }
+
+  &.is-open {
+
+    .faq-item__spoller {
+      background-color: var(--color-accent);
+      color: var(--color-white);
+
+      @include mq($m) {
+        background-color: transparent;
+        color: unset;
+      }
+    }
+
+    .faq-item__num {
+      color: var(--color-white);
+
+      @include mq($m) {
+        color: unset;
+      }
+    }
+
+    .faq-item__icon {
+      background-color: var(--color-white);
+      color: var(--color-accent);
+      transform: rotate(180deg);
+
+      @include mq($m) {
+        background-color: var(--color-accent);
+        color: var(--color-white);
+      }
+    }
+
+    .faq-item__body {
+      display: block;
+    }
+  }
+
+  &__spoller {
+    display: grid;
+    grid-template-columns: 290px 1fr auto;
+    align-items: center;
+    padding: 44px 46px 44px 32px;
+    background-color: var(--color-grey-100);
+    border-radius: 20px;
+    width: 100%;
+    cursor: pointer;
+
+    @include mq($l) {
+      grid-template-columns: 200px 1fr auto;
+    }
+
+    @include mq($m) {
+      grid-template-columns: 70px 1fr auto;
+      padding: 20px 0;
+      background-color: transparent;
+    }
+  }
+
+  &__num {
+    font-family: var(--font-secondary);
+    font-size: 45px;
+    line-height: 1.38;
+    color: var(--color-grey);
+
+    @include mq($l) {
+      font-size: 32px;
+    }
+
+    @include mq($m) {
+      font-size: 18px;
+    }
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 600;
+
+    @include mq($m) {
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  &__icon {
+    --size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+
+    @include mq($m) {
+      --size: 32px;
+    }
+  }
+
+  &__body {
+    display: none;
+    padding: 30px 46px 10px 32px;
+
+    @include mq($m) {
+      padding: 0 0 20px 0;
+    }
+  }
+
+  &__text {
+    max-width: 1340px;
+    font-weight: 500;
+    padding-left: 290px;
+
+    @include mq($l) {
+      padding-left: 200px;
+    }
+
+    @include mq($m) {
+      padding-left: 0;
+    }
+  }
+}

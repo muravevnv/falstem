@@ -1,0 +1,135 @@
+@use '../mixins' as *;
+
+.videomaterials {
+  position: relative;
+
+  &__decor {
+    position: absolute;
+    left: 20%;
+    bottom: 0;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 0 30px;
+    max-width: 1920px;
+    margin: 0 auto;
+
+    @include mq(1680px) {
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    @include mq($m) {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__btn {
+    margin-top: 50px;
+
+    @include mq($m) {
+      margin-top: 10px;
+    }
+  }
+}
+
+.videomaterials-item {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-black);
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  @include mq-hover {
+
+    .videomaterials-item__img {
+      transform: scale(1.1);
+    }
+  }
+
+  &__icon {
+    --size: 132px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-white-10);
+    z-index: 2;
+    border-radius: 50%;
+
+    @include mq($m) {
+      --size: 92px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(var(--size) / 1.35);
+      height: calc(var(--size) / 1.35);
+      background-color: var(--color-white-50);
+      border-radius: 50%;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(var(--size) / 2);
+      height: calc(var(--size) / 2);
+      background-color: var(--color-white);
+      border-radius: 50%;
+    }
+
+    .icon {
+      position: relative;
+      z-index: 2;
+      color: var(--color-accent);
+
+      @include mq($m) {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

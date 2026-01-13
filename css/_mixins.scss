@@ -1,0 +1,33 @@
+@use 'sass:math';
+@use 'sass:meta';
+
+$xs: 479.98px;
+$s: 620px;
+$m: 767.98px;
+$l: 1023.98px;
+$xl: 1279.98px;
+$xxl: 1439.98px;
+$tablet: 1023.98px;
+$mobile: 767.98px;
+$mobileSmall: 479.98px; 
+
+@function rem($px, $current: 16) {
+  $result: math.div($px, $current) + rem;
+  @return $result;
+}
+
+@mixin mq($canvas, $canvas2: null) {
+  @if $canvas {
+    @media only screen and (max-width: $canvas) {
+      @content;
+    }
+  }
+}
+
+@mixin mq-hover() {
+  &:hover {
+    @media (hover: hover) {
+      @content;
+    }
+  }
+}

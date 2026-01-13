@@ -1,0 +1,102 @@
+@use '../mixins' as *;
+
+.coockies {
+  width: 100%;
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translateY(24px);
+  transition: 0.3s ease-in-out;
+
+  @include mq($l) {
+    bottom: 20px;
+  }
+
+  &.is-show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 50px;
+    background-color: #2A2D32B2;
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+
+    @include mq($l) {
+      padding: 24px;
+      gap: 24px;
+    }
+
+    @include mq($m) {
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      border-radius: 12px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    color: var(--color-white);
+
+    @include mq($l) {
+      gap: 16px;
+    }
+
+    @include mq($m) {
+      flex-direction: column;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-secondary);
+    font-size: 24px;
+
+    @include mq($l) {
+      font-size: 18px;
+    }
+  }
+
+  &__btn {
+    display: inline-block;
+    width: auto;
+    padding: 32px;
+    flex-shrink: 0;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+
+    @include mq($m) {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    @include mq-hover {
+      background-color: var(--color-accent-dark);
+    }
+  }
+}

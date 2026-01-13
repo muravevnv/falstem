@@ -1,0 +1,196 @@
+@use '../mixins' as *;
+
+.advantages {
+  overflow: hidden;
+
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 100px;
+
+    @include mq($l) {
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    @include mq($m) {
+      gap: 30px;
+    }
+  }
+
+  &__decor {
+    position: absolute;
+    right: -15%;
+    bottom: -5%;
+    z-index: -1;
+  }
+
+  &__info {
+    position: relative;
+    width: 42%;
+    z-index: 1;
+
+    @include mq($l) {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    margin-bottom: 50px;
+
+    @include mq($m) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__desc {
+    font-weight: 500;
+    margin-bottom: 100px;
+
+    @include mq($l) {
+      margin-bottom: 50px;
+    }
+
+    @include mq($m) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__bottom {
+    max-width: 620px;
+    width: 100%;
+  }
+
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+
+    @include mq($m) {
+      gap: 10px;
+    }
+  }
+
+  &__image {
+    aspect-ratio: 1/1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__btn {
+    margin-top: 30px;
+
+    @include mq($m) {
+      margin-top: 10px;
+    }
+  }
+
+  &__list {
+    width: 58%;
+
+    @include mq($l) {
+      width: 100%;
+    }
+
+    @include mq($m) {
+      width: calc(100% + 40px);
+      margin: 0 -20px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 72px;
+    transition: background-color 0.3s ease-in-out, border-radius 0.3s ease-in-out, color 0.3s ease-in-out;
+
+    @include mq($m) {
+      gap: 24px;
+      padding: 12px 20px;
+      min-height: 72px;
+    }
+
+    &.is-active {
+      background-color: var(--color-accent);
+      color: var(--color-white);
+      border-radius: 10px;
+
+      @include mq($m) {
+        border-radius: 0;
+      }
+
+      .advantages__item-num {
+        color: var(--color-white);
+      }
+
+      &::before {
+        opacity: 0;
+      }
+    }
+
+    @include mq-hover {
+      background-color: var(--color-accent);
+      color: var(--color-white);
+      border-radius: 10px;
+
+      @include mq($m) {
+        border-radius: 0;
+      }
+
+      .advantages__item-num {
+        color: var(--color-white);
+      }
+
+      &::before {
+        opacity: 0;
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 72px;
+      width: calc(100% - 72px);
+      height: 1px;
+      background-color: #F3F2F0;
+      transition: opacity 0.3s ease-in-out;
+
+      @include mq($m) {
+        left: 20px;
+        width: calc(100% - 40px);
+      }
+    }
+
+    &-num {
+      font-family: var(--font-secondary);
+      font-size: 32px;
+      color: var(--color-grey);
+      transition: color 0.3s ease-in-out;
+
+      @include mq($m) {
+        font-size: 18px;
+      }
+    }
+
+    &-desc {
+      font-size: 20px;
+      font-weight: 500;
+
+      @include mq($m) {
+        font-size: 14px;
+      }
+    }
+  }
+}

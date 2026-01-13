@@ -1,0 +1,50 @@
+@use '../mixins' as *;
+
+.breadcrumbs {
+  margin: 14px 0 42px;
+
+  @include mq($m) {
+    margin: 0 0 26px;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    @include mq($m) {
+      width: calc(100% + 40px);
+      padding: 0 20px;
+      margin: 0 -20px;
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__item {
+    padding-left: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
+    line-height: 1.25;
+    color: var(--color-primary-70);
+
+    @include mq($m) {
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    &:not(:first-child) {
+      &::before {
+        content: '/';
+      }
+    }
+  }
+}

@@ -1,0 +1,188 @@
+@use '../mixins' as *;
+
+.footer {
+  padding: 100px 0;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+
+  @include mq($m) {
+    padding: 50px 0;
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    @include mq($m) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+
+    @include mq($m) {
+      gap: 16px;
+    }
+  }
+
+  &__tel {
+    font-size: 40px;
+    line-height: 1;
+    font-weight: 600;
+
+    @include mq($xxl) {
+      font-size: 24px;
+    }
+  }
+
+  &__email {
+    font-size: 24px;
+    text-decoration: underline;
+
+    @include mq($m) {
+      font-size: 18px;
+    }
+  }
+
+  &__logo {
+    display: block;
+    max-width: 520px;
+    width: 100%;
+    padding: 40px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: var(--color-primary-light);
+
+    @include mq($xxl) {
+      max-width: 400px;
+    }
+
+    @include mq($m) {
+      order: -1;
+      max-width: 320px;
+      padding: 12px;
+
+      img {
+        display: block;
+        width: 166px;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    @include mq($m) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+    }
+
+    @include mq($xs) {
+      width: 100%;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include mq($m) {
+      flex-direction: row;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @include mq($xs) {
+      width: 100%;
+    }
+  }
+
+  &__item {
+    width: 100%;
+  }
+
+  &__link {
+    width: 100%;
+    display: block;
+    padding: 12px 24px;
+    background-color: var(--color-primary-light);
+    text-align: center;
+    color: var(--color-white);
+    font-weight: 600;
+    border-radius: 72px;
+    transition: background-color 0.3s ease-in-out;
+
+    @include mq($m) {
+      font-size: 16px;
+    }
+
+    @include mq-hover {
+
+      background-color: var(--color-accent);
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid var(--color-white-15);
+
+    @include mq($m) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      padding-top: 30px;
+      margin-top: 30px;
+    }
+  }
+
+
+  &__policy {
+    text-decoration: underline;
+  }
+
+  &__developer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    @include mq($m) {
+      width: 100%;
+      padding-top: 30px;
+      border-top: 1px solid var(--color-white-15);
+      order: 10;
+    }
+
+    &-label {
+      color: var(--color-white-50);
+    }
+  }
+
+  &__copyright {
+    color: var(--color-white-50);
+  }
+}

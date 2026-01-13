@@ -1,0 +1,13 @@
+.textblock {
+
+  &__desc {
+
+    p + p {
+      margin-top: 24px;
+
+      @media(max-width: 767px) {
+        margin-top: 16px;
+      }
+    }
+  }
+}

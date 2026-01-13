@@ -1,0 +1,66 @@
+@use '../mixins' as *;
+
+.article {
+
+  &__img {
+    display: block;
+    width: 100%;
+    margin-bottom: 50px;
+
+    @include mq($m) {
+      margin-bottom: 30px;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      border-radius: 20px;
+    }
+  }
+
+  &__desc {
+    margin-bottom: 50px;
+
+    @include mq($m) {
+      margin-bottom: 30px;
+    }
+
+    p+p {
+      margin-top: 32px;
+
+      @include mq($m) {
+        margin-top: 24px;
+      }
+    }
+  }
+
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+
+    @include mq($m) {
+      gap: 10px;
+    }
+
+    &-img {
+      display: block;
+      width: 100%;
+
+      @include mq($m) {
+        aspect-ratio: 1/1;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        border-radius: 20px;
+
+        @include mq($m) {
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}

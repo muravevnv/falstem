@@ -1,0 +1,34 @@
+@use '../mixins' as *;
+
+.not-found {
+  padding: 150px 0;
+
+  @include mq($m) {
+    padding: 60px 0;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+
+    @include mq($m) {
+      gap: 30px;
+    }
+  }
+
+  &__desc {
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__btn {
+
+    @include mq($m) {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+}

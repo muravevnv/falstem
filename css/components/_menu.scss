@@ -1,0 +1,172 @@
+@use '../mixins' as *;
+
+.menu {
+  --header-height: 114px;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-white);
+  z-index: 98;
+  padding: var(--header-height) 30px 30px;
+  transform: translateY(-100%);
+  transition: transform .3s ease-in-out;
+
+  &.is-open {
+    transform: translateY(0);
+  }
+
+  @include mq($xl) {
+    padding: var(--header-height) 20px 20px;
+    overflow-y: auto;
+  }
+
+  @include mq($m) {
+    --header-height: 95px;
+  }
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    padding: 40px 120px;
+    border-radius: 20px;
+    overflow-y: auto;
+
+    @include mq($xl) {
+      max-height: unset;
+      height: auto;
+      background-color: transparent;
+      color: var(--color-primary);
+      padding: 0;
+      border-radius: 0;
+      overflow: unset;
+    }
+  }
+
+  &__inner {
+    max-width: 1600px;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include mq($xl) {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 30px;
+    }
+  }
+
+  &__title {
+    display: block;
+    width: auto;
+    height: 100%;
+    max-height: 100%;
+
+    @include mq($xl) {
+      display: none;
+    }
+
+    img {
+      display: block;
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  &__nav {
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+
+      @include mq($xl) {
+        gap: 20px;
+      }
+
+      @include mq($m) {
+        gap: 16px;
+      }
+    }
+
+    &-link {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--color-white-70);
+
+      @include mq($xl) {
+        color: var(--color-primary);
+      }
+
+      @include mq($m) {
+        font-size: 16px;
+      }
+
+      &.is-active {
+        color: var(--color-white);
+        text-decoration: underline;
+
+        @include mq($xl) {
+          color: var(--color-accent);
+        }
+      }
+
+      @include mq-hover {
+        color: var(--color-white);
+        text-decoration: underline;
+
+        @include mq($xl) {
+          color: var(--color-accent);
+        }
+      }
+    }
+  }
+
+  &__socials {
+    display: none;
+
+    @include mq($xl) {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+
+  &__contacts {
+    display: none;
+
+    @include mq($xl) {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 20px 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    &-item {
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+
+  &__btn {
+    display: none;
+
+    @include mq($xl) {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}

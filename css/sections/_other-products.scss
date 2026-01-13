@@ -1,0 +1,17 @@
+@use '../mixins' as *;
+
+.other-products {
+  overflow: hidden;
+
+  &__slider {
+    overflow: hidden;
+
+    .slider-pagination {
+      display: none;
+
+       @include mq($m) {
+         display: flex;
+       }
+    }
+  }
+}

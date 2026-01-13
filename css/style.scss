@@ -1,0 +1,38 @@
+@use './vars';
+@use './mixins';
+
+@use 'base/fonts';
+@use 'base/base';
+@use 'base/typography';
+
+@use 'components/btn';
+@use 'components/form';
+@use 'components/header';
+@use 'components/footer';
+@use 'components/breadcrumbs';
+@use 'components/slider';
+@use 'components/menu';
+@use 'components/coockies';
+
+@use 'sections/section';
+@use 'sections/textblock';
+@use 'sections/hero';
+@use 'sections/advantages';
+@use 'sections/our-production';
+@use 'sections/solutions';
+@use 'sections/videomaterials';
+@use 'sections/tech-album';
+@use 'sections/contacts';
+@use 'sections/categories';
+@use 'sections/catalog';
+@use 'sections/contact-us';
+@use 'sections/faq';
+@use 'sections/documents';
+@use 'sections/brands';
+@use 'sections/article';
+@use 'sections/other-news';
+@use 'sections/product';
+@use 'sections/other-products';
+@use 'sections/objects';
+@use 'sections/not-found';
+@use 'sections/policy';

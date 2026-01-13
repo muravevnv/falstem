@@ -1,0 +1,52 @@
+@use '../mixins' as *;
+
+.solutions {
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 0 30px;
+    max-width: 1920px;
+    margin: 0 auto;
+
+    @include mq(1680px) {
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    @include mq($m) {
+      gap: 10px;
+    }
+  }
+
+  &__btn {
+    margin-top: 50px;
+
+    @include mq($m) {
+      margin-top: 10px;
+    }
+  }
+}
+
+.solutions-item {
+  width: 100%;
+
+  &__img {
+    display: block;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+
+    @include mq($m) {
+      aspect-ratio: 1/1;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

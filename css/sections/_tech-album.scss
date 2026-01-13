@@ -1,0 +1,132 @@
+@use '../mixins' as *;
+
+.tech-album {
+
+  .section-heading__title {
+
+    span {
+      display: block;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__decor {
+    position: absolute;
+    right: 10%;
+    top: calc((var(--size) / 2) * -1);
+    z-index: -1;
+  }
+
+  &__list {
+    overflow: hidden;
+
+    .swiper-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+
+      @include mq($l) {
+        display: flex;
+        gap: 0;
+      }
+    }
+
+    .slider-pagination {
+      display: none;
+
+      @include mq($l) {
+        display: flex;
+      }
+    }
+  }
+}
+
+.tech-album-item {
+  padding: 30px;
+  border-radius: 20px;
+  background-color: var(--color-grey-100);
+  transition: background-color 0.3s ease-in-out;
+
+  @include mq($l) {
+    padding: 20px;
+    background-color: var(--color-accent);
+    border-radius: 12px;
+  }
+
+  @include mq-hover {
+    background-color: var(--color-accent);
+
+    .tech-album-item__title {
+      background-color: var(--color-accent);
+    }
+
+    .tech-album-item__link {
+      opacity: 1;
+    }
+  }
+
+  &__inner {
+    position: relative;
+  }
+
+  &__title {
+    position: absolute;
+    inset: 20px 20px auto;
+    width: calc(100% - 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+    padding: 12px;
+    min-height: 68px;
+    border-radius: 20px;
+    background-color: var(--color-accent-80);
+    color: var(--color-white);
+    transition: background-color 0.3s ease-in-out;
+
+    @include mq($l) {
+      inset: 12px 12px auto;
+      width: calc(100% - 24px);
+      min-height: 42px;
+      background-color: var(--color-accent);
+      border-radius: 12px;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+
+    @include mq($l) {
+      border-radius: 12px;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &__link {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    @include mq($l) {
+      width: calc(100% - 24px);
+      justify-content: space-between;
+      bottom: 12px;
+      opacity: 1;
+    }
+  }
+}
