@@ -83,7 +83,7 @@ body.lock {
   overflow: hidden;
   padding-right: 15px;
 }
-@media only screen and (max-width: 1660px) {
+@media (max-width: 1660px) {
   body.lock {
     padding-right: 0;
   }
