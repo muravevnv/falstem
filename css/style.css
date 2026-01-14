@@ -1019,6 +1019,11 @@ textarea.form-control {
   bottom: 40px;
   left: 0;
   z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translateY(24px);
+  transition: 0.3s ease-in-out;
 }
 @media only screen and (max-width: 1023.98px) {
   .coockies {
