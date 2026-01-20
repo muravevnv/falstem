@@ -15,6 +15,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const menu = document.querySelector('[data-menu="menu"]');
   const menuBtn = document.querySelector('[data-menu="btn"]');
+  const menuLinks = document.querySelectorAll('[data-menu="link"]');
+
+  function handleMenuLinkClick(event) {
+    event.preventDefault();
+    const link = event.currentTarget;
+    const href = link.getAttribute("href");
+
+    // Закрываем меню
+    bodyUnlock();
+    menuBtn.classList.remove("is-active");
+    menu.classList.remove("is-open");
+
+    // Получаем путь текущей страницы
+    const currentPath = window.location.pathname;
+    const currentPage = currentPath.split("/").pop(); // Получаем имя файла (например, home.html)
+
+    // Проверяем, находимся ли мы НЕ на главной странице
+    const isNotHomePage = currentPage !== "home.html" && currentPage !== "";
+
+    if (href.startsWith("#") && isNotHomePage) {
+      // Если мы на внутренней странице, переходим на главную с якорем
+      window.location.href = "/home.html" + href;
+    } else {
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+  }
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", handleMenuLinkClick);
+  });
 
   if (menu && menuBtn) {
     menuBtn.addEventListener("click", () => {
@@ -30,12 +68,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function scrollToHashOnLoad() {
+    const currentPage = window.location.pathname.split("/").pop();
+
+    if (currentPage === "home.html" || currentPage === "") {
+      setTimeout(() => {
+        const hash = window.location.hash;
+        if (hash) {
+          const targetId = hash.substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        }
+      }, 300);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", scrollToHashOnLoad);
+  window.addEventListener("hashchange", scrollToHashOnLoad);
+
   if (document.querySelector('[data-slider="hero"]')) {
     const slider = document.querySelector('[data-slider="hero"]');
     const thumbs = document.querySelector('[data-thumbs="hero"]');
 
     const swiperThumbs = new Swiper(thumbs, {
-      slidesPerView: 3,
+      slidesPerView: "auto",
+      spaceBetween: 8,
+      freeMode: true,
+      watchSlidesProgress: true,
+      centerInsufficientSlides: true,
+      breakpoints: {
+        768: {
+          spaceBetween: 12,
+        },
+      },
     });
 
     const swiper = new Swiper(slider, {
@@ -269,7 +340,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const STORAGE_KEY = "cookies_accepted";
 
   if (!localStorage.getItem(STORAGE_KEY)) {
-
     setTimeout(function () {
       $('[data-coockies="panel"]').addClass("is-show");
     }, 1000);
@@ -301,7 +371,6 @@ document.addEventListener("DOMContentLoaded", () => {
           iconCaption: "",
         },
         {
-          
           iconLayout: "default#image",
           iconImageHref: "../images/icons/map-pin.svg",
           iconImageSize: [100, 100],
@@ -311,4 +380,52 @@ document.addEventListener("DOMContentLoaded", () => {
       map.geoObjects.add(customPlacemark);
     });
   }
+
+  $("form").each(function () {
+    const $form = $(this);
+    const $textInputs = $form.find("[data-required]");
+    const $checkbox = $form.find(".form-checkbox__input");
+    const $checkboxWrapper = $checkbox.closest(".form-checkbox");
+
+    $textInputs.on("input focus", function () {
+      const $input = $(this);
+      const $formGroup = $input.closest(".form-group");
+
+      $formGroup.removeClass("_form-error");
+      $input.removeClass("_form-error");
+    });
+
+    $checkbox.on("change", function () {
+      if ($(this).prop("checked")) {
+        $checkboxWrapper.removeClass("_form-error");
+      }
+    });
+
+    $form.on("submit", function (e) {
+      e.preventDefault();
+
+      let isValid = true;
+
+      $textInputs.each(function () {
+        const $input = $(this);
+        const $formGroup = $input.closest(".form-group");
+
+        if (!$.trim($input.val())) {
+          $formGroup.addClass("_form-error");
+          $input.addClass("_form-error");
+          isValid = false;
+        }
+      });
+
+      if (!$checkbox.prop("checked")) {
+        $checkboxWrapper.addClass("_form-error");
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Здесь можно добавить отправку формы
+        console.log("Форма валидна, отправляем данные");
+      }
+    });
+  });
 });

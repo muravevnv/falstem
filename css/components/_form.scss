@@ -15,9 +15,18 @@
 .form-group {
   position: relative;
   width: 100%;
-  padding: 25px;
+  padding: 23px;
   background-color: var(--color-white);
+  border: 1px solid var(--color-white);
   border-radius: 20px;
+
+  &._form-error {
+    border-color: var(--color-error);
+
+    .form-label {
+      color: var(--color-error);
+    }
+  }
 
   @include mq($m) {
     padding: 16px 20px;
@@ -113,6 +122,12 @@ textarea.form-control {
 
     a {
       text-decoration: underline;
+    }
+  }
+
+  &._form-error {
+    .form-checkbox__icon {
+      border: 1px solid var(--color-error);
     }
   }
 }

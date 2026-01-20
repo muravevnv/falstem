@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@charset "UTF-8";
 :root {
   --font-primary: "Montserrat", sans-serif;
   --font-secondary: "Nebulosa", sans-serif;
@@ -24,12 +24,48 @@
   --color-grey: #888785;
   --color-grey-100: #F5F5F5;
   --color-border: #F3F2F0;
+  --color-error: #FF0000;
 }
 
 @font-face {
   font-family: "Nebulosa";
   src: url("../fonts/Nebulosa-Black.woff") format("woff"), url("../fonts/Nebulosa-Black.woff2") format("woff2");
   font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../fonts/Montserrat-Regular.woff") format("woff"), url("../../fonts/Montserrat-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../fonts/Montserrat-Medium.woff") format("woff"), url("../../fonts/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../fonts/Montserrat-SemiBold.woff") format("woff"), url("../../fonts/Montserrat-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../fonts/Montserrat-Bold.woff") format("woff"), url("../../fonts/Montserrat-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../fonts/Montserrat-ExtraBold.woff") format("woff"), url("../../fonts/Montserrat-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
@@ -278,9 +314,16 @@ main {
 .form-group {
   position: relative;
   width: 100%;
-  padding: 25px;
+  padding: 23px;
   background-color: var(--color-white);
+  border: 1px solid var(--color-white);
   border-radius: 20px;
+}
+.form-group._form-error {
+  border-color: var(--color-error);
+}
+.form-group._form-error .form-label {
+  color: var(--color-error);
 }
 @media only screen and (max-width: 767.98px) {
   .form-group {
@@ -367,6 +410,9 @@ textarea.form-control {
 }
 .form-checkbox__desc a {
   text-decoration: underline;
+}
+.form-checkbox._form-error .form-checkbox__icon {
+  border: 1px solid var(--color-error);
 }
 
 .header {
@@ -1250,13 +1296,25 @@ textarea.form-control {
   border-radius: 100px;
   transform: translateX(-50%);
   z-index: 2;
-  overflow: hidden;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  max-width: 90%;
+  box-sizing: border-box;
 }
 @media only screen and (max-width: 767.98px) {
   .hero__thumbs {
     bottom: 4px;
     padding: 4px;
+    max-width: 95%;
   }
+}
+.hero__thumbs .swiper-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.hero__thumbs .swiper-slide {
+  width: auto !important;
+  /* Отменяем фиксированную ширину слайдов */
 }
 .hero__thumbs .swiper-slide-thumb-active .hero__thumb {
   border-color: var(--color-primary);
@@ -1269,6 +1327,8 @@ textarea.form-control {
   border: 1px solid transparent;
   border-radius: 50%;
   cursor: pointer;
+  flex-shrink: 0;
+  /* Запрещаем уменьшение размера */
 }
 @media only screen and (max-width: 767.98px) {
   .hero__thumb {
