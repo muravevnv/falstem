@@ -164,7 +164,7 @@
         <picture class="menu__title">
           <img src="./images/menu/menu-title.svg" alt="Меню">
         </picture>
-        <a href="#" class="menu__btn btn">
+        <a href="#" class="menu__btn btn" data-fancybox data-src="#modal">
           <div class="btn__title">Связаться с нами</div>
           <div class="btn__icon">
             <svg class="icon icon--m">
@@ -346,7 +346,7 @@
                   <img src="./images/advantages/advantage-02.webp" alt="Фото преимущества">
                 </picture>
               </div>
-              <a href="#" class="advantages__btn btn btn--wide">
+              <a href="#" class="advantages__btn btn btn--wide" data-fancybox data-src="#modal">
                 <div class="btn__title">Связаться с нами</div>
                 <div class="btn__icon">
                   <svg class="icon icon--m">
@@ -675,7 +675,7 @@
         </a>
       </div>
       <div class="container">
-        <a href="#" class="solutions__btn btn btn--wide">
+        <a href="#" class="solutions__btn btn btn--wide" data-fancybox data-src="#modal">
           <div class="btn__title">Связаться с нами</div>
           <div class="btn__icon">
             <svg class="icon">
@@ -695,7 +695,7 @@
         </div>
       </div>
       <div class="videomaterials__list">
-        <a href="#" class="videomaterials-item">
+        <a href="#" class="videomaterials-item" data-fancybox data-src="./images/video/video.mp4">
           <picture class="videomaterials-item__img">
             <img src="./images/video/video-01.webp" alt="Видео">
           </picture>
@@ -705,7 +705,7 @@
             </svg>
           </div>
         </a>
-        <a href="#" class="videomaterials-item">
+        <a href="#" class="videomaterials-item" data-fancybox data-src="./images/video/video.mp4">
           <picture class="videomaterials-item__img">
             <img src="./images/video/video-02.webp" alt="Видео">
           </picture>
@@ -1306,7 +1306,7 @@
             </div>
           </div>
         </div>
-        <a href="#" class="faq__btn btn btn--wide">
+        <a href="#" class="faq__btn btn btn--wide" data-fancybox data-src="#modal">
           <div class="btn__title">Связаться с нами</div>
           <div class="btn__icon">
             <svg class="icon">
@@ -1443,6 +1443,62 @@
         <button type="button" class="coockies__btn" data-coockies="btn">
           Согласен(а)
         </button>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="modal" style="display: none;">
+    <div class="contact-us">
+
+      <div class="contact-us__wrapper">
+        <div class="container">
+          <div class="contact-us__inner">
+            <div class="contact-us__head">
+              <div class="contact-us__title h2">
+                Свяжитесь с нами, мы готовы
+                <span>помочь и найти оптимальное решение</span>
+              </div>
+              <button type="button" class="contact-us__close" data-fancybox-close>
+                <svg class="icon">
+                  <use xlink:href="./images/icons/sprite.svg#close"></use>
+                </svg>
+              </button>
+            </div>
+            <form action="" class="contact-us__form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="" class="form-label">Имя</label>
+                  <input type="text" class="form-control" placeholder="Имя" data-required>
+                </div>
+                <div class="form-group">
+                  <label for="" class="form-label">Телефон</label>
+                  <input type="text" class="form-control" placeholder="+7 (___) ___-__-__" data-required>
+                </div>
+                <div class="form-group">
+                  <label for="" class="form-label">Почта</label>
+                  <input type="text" class="form-control" placeholder="Почта" data-required>
+                </div>
+              </div>
+              <button type="submit" class="form-btn btn btn--wide btn--transparent">
+                <div class="btn__title">Отправить</div>
+                <div class="btn__icon">
+                  <svg class="icon icon--m">
+                    <use xlink:href="./images/icons/sprite.svg#arrow-right"></use>
+                  </svg>
+                </div>
+              </button>
+              <div class="form-checkbox">
+                <input type="checkbox" id="id_checkbox_condition_03" class="form-checkbox__input">
+                <label for="id_checkbox_condition_03" class="form-checkbox__label">
+                  <div class="form-checkbox__icon"></div>
+                  <div class="form-checkbox__desc">
+                    Я ознакомлен(а) с <a href="#">Политикой конфиденциальности</a> и даю свое <a href="#">Согласие на
+                      обработку персональных данных</a>
+                  </div>
+                </label>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
