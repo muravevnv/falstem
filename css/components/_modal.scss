@@ -1,3 +1,5 @@
+@use '../mixins' as *;
+
 .modal {
   max-width: 100%;
   width: 100%;
@@ -6,5 +8,24 @@
 
   .fancybox-close-small {
     display: none;
+  }
+
+  .contact-us {
+
+    @include mq($m) {
+      height: 100vh;
+      overflow-y: auto;
+      background-color: var(--color-white);
+      padding: 95px 0 20px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  .contact-us__close {
+
+
   }
 }
